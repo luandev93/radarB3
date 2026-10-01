@@ -1,0 +1,48 @@
+name: Require STATUS update
+
+on:
+  push:
+    branches:
+      - "**"
+  pull_request:
+
+jobs:
+  status-guard:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Require docs/STATUS.md on relevant commits
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            git fetch origin "${{ github.base_ref }}" --depth=1
+            CHANGED="$(git diff --name-only "origin/${{ github.base_ref }}...HEAD")"
+          elif git rev-parse HEAD^ >/dev/null 2>&1; then
+            CHANGED="$(git diff --name-only HEAD^ HEAD)"
+          else
+            echo "Initial commit: status guard skipped."
+            exit 0
+          fi
+
+          echo "Changed files:"
+          echo "$CHANGED"
+
+          RELEVANT="$(echo "$CHANGED" | grep -Ev '^(docs/|README\.md$|LICENSE$|\.github/ISSUE_TEMPLATE/|\.github/PULL_REQUEST_TEMPLATE\.md$)' || true)"
+
+          if [ -z "$RELEVANT" ]; then
+            echo "Documentation-only change. STATUS update not required."
+            exit 0
+          fi
+
+          if ! echo "$CHANGED" | grep -qx 'docs/STATUS.md'; then
+            echo "::error::Relevant project changes must update docs/STATUS.md in the same commit/PR."
+            exit 1
+          fi
+
+          echo "STATUS.md updated."
