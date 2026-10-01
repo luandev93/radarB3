@@ -1,28 +1,28 @@
 # RadarB3 — Status vivo
 
 Última atualização: 2026-10-01
-Fase ativa: **Fase 3 — Lista de ações e FIIs (implementada; publicação a validar)**
-Estado geral: **FASE 3 IMPLEMENTADA — CHECKS VERDES, PUBLICAÇÃO A VALIDAR**
+Fase ativa: **Fase 4 — Página individual do ativo (pronta para iniciar)**
+Estado geral: **FASE 3 CONCLUÍDA NA COBERTURA DISPONÍVEL — PUBLICADA E VALIDADA**
 
 ## Último commit registrado
 
-- Baseline: `eaf94c5` — conclusão da Fase 1 publicada.
-- Último commit de implementação: `680f0e3` — `feat(data): add typed brapi sandbox provider and quote states`.
-- Este commit: `feat(assets): add searchable sortable sandbox asset table`.
+- Baseline desta fase: `93ed9ad` — conclusão da Fase 2 publicada.
+- Último commit de implementação: `6644e74` — `feat(assets): add searchable sortable sandbox asset table`.
+- Este registro: `docs(status): complete phase 3 after public listing validation`.
 
 ## Progresso global
 
 - [x] Fase 0 — Bootstrap e governança
 - [x] Fase 1 — Frontend + GitHub Pages
 - [x] Fase 2 — Camada de dados
-- [ ] Fase 3 — Ações e FIIs
+- [x] Fase 3 — Ações e FIIs (interface; cobertura limitada)
 - [ ] Fase 4 — Página individual
 - [ ] Fase 5 — Rankings
 - [ ] Fase 6 — Screener
 - [ ] Fase 7 — Railway/PostgreSQL
 - [ ] Fase 8 — Release MVP
 
-## Concluído nesta entrega
+## Concluído na Fase 3
 
 - Tabela reutilizável de dez colunas com links ao ativo, fonte e horário por linha.
 - Busca por ticker/nome e filtros rápidos: todas, com cotação, variação positiva/negativa.
@@ -41,8 +41,13 @@ Estado geral: **FASE 3 IMPLEMENTADA — CHECKS VERDES, PUBLICAÇÃO A VALIDAR**
 - Playwright: seis testes passaram em 390px/1280px; seis rotas/404, reload, busca, filtro, teclado, retorno, erro/retry/vazio e axe.
 - Capturas da lista mobile/desktop inspecionadas; rolagem contida, sem overflow no documento. Ticker ajustado para não quebrar linha.
 - format:check e git diff --check passaram. Auditoria premium strict: zero findings. DESIGN lint: zero erros (três avisos de tokens órfãos já existentes).
-- Revalidação final: lint, 27 testes, TypeScript/build e seis testes E2E passaram. Publicação ainda a validar.
-- Site público ainda corresponde à Fase 2: https://luandev93.github.io/radarB3/ .
+- Revalidação final: lint, 27 testes, TypeScript/build e seis testes E2E passaram. Publicação validada.
+- GitHub Actions https://github.com/luandev93/radarB3/actions/runs/36928611178 : build e deploy success. Guard de STATUS passou.
+- Navegador público: quatro ativos com dados reais, nomes distintos, preço/variação/volume e fonte/horários por linha.
+- Busca por nome "magazine" mostrou MGLU3 e persistiu após reload; limpar e filtro negativo mostraram ITUB4 no momento da verificação.
+- Ordenação crescente por preço produziu MGLU3, ITUB4, PETR4, VALE3; URL registrou sort/dir.
+- Ticker abriu PETR4; FIIs mostrou ausência de cobertura; navegação de volta a Ações funcionou.
+- URL publicada e validada: https://luandev93.github.io/radarB3/#/acoes .
 
 ## Bloqueios e limites
 
@@ -50,4 +55,4 @@ Nenhum bloqueio para o sandbox. Cobertura completa de ações/FIIs e fundamentos
 
 ## Próximo passo exato
 
-Concluir checks finais, publicar a lista e validar no Pages a tabela real, busca, ordenação, recarga e FIIs indisponíveis. Depois registrar conclusão da Fase 3 e iniciar Fase 4 pelo cabeçalho do ativo, preservando limites de cobertura para gráficos/proventos/fundamentos.
+Iniciar Fase 4 pelo primeiro item: cabeçalho individual do ativo, com nome/tipo e informações disponíveis no contrato. Completar cards/valor de mercado/volume e fallbacks explícitos. Antes de implementar gráfico, histórico de proventos ou fundamentos, verificar disponibilidade pública no sandbox e limites da fonte; se ausentes, registrar bloqueio real sem criar dados fictícios nem antecipar Railway ou expor token. Não avançar rankings/screener antes de resolver o núcleo.

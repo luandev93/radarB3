@@ -2,7 +2,7 @@
 
 RadarB3 é um screener e painel de análise de ativos da B3, criado para consolidar dados de mercado e fundamentos em uma interface rápida, filtrável e orientada à comparação.
 
-> Status atual: Fase 2 concluída e publicada. Fase 3 implementada, em validação de publicação. Frontend no GitHub Pages. Nenhuma recomendação de investimento é produzida pelo sistema. Os indicadores são informativos e devem exibir fonte e data de atualização.
+> Status atual: Fase 3 concluída na cobertura disponível e publicada. Fase 4 pronta para iniciar. Frontend no GitHub Pages. Nenhuma recomendação de investimento é produzida pelo sistema. Os indicadores são informativos e devem exibir fonte e data de atualização.
 
 ## Objetivo do MVP
 

@@ -17,7 +17,7 @@ Estado recebido:
 - plano detalhado criado;
 - status vivo criado;
 - governança de commits criada;
-- Fase 1 publicada a partir de `bc23003`; Fase 2 publicada a partir de `680f0e3`; fase ativa agora é Fase 3, conforme STATUS.
+- Fase 1 publicada a partir de `bc23003`; Fase 2 publicada a partir de `680f0e3`; Fase 3 publicada a partir de `6644e74`; fase ativa agora é Fase 4, conforme STATUS.
 
 ## Leitura obrigatória antes de editar código
 
@@ -70,9 +70,9 @@ O GitHub Pages é estático. Portanto:
 
 ## Fase atual
 
-**Fase 3 — Lista de ações e FIIs**
+**Fase 4 — Página individual do ativo**
 
-As Fases 1 e 2 estão concluídas. Não repetir bootstrap/camada de dados; iniciar tabela/grid reutilizável da Fase 3. A execução abaixo é o histórico do bootstrap.
+As Fases 1, 2 e a interface da Fase 3 na cobertura disponível estão concluídas. Não repetir bootstrap/camada de dados/listagem; iniciar cabeçalho da Fase 4. A execução abaixo é o histórico do bootstrap.
 
 ### Execução esperada
 
@@ -161,9 +161,9 @@ A primeira entrega publicada deve permitir:
 
 ## Próximo commit sugerido
 
-`feat(assets): add reusable asset table for sandbox coverage`
+`feat(asset): expand asset header and available indicators`
 
-Esse commit deve iniciar Fase 3, preservar cobertura/ausências explícitas, incluir validações adequadas e atualizar STATUS no mesmo commit.
+Esse commit deve iniciar Fase 4, preservar cobertura/ausências explícitas, incluir validações adequadas e atualizar STATUS no mesmo commit.
 
 ## Critério para passar à Fase 2
 
@@ -205,7 +205,7 @@ Somente avançar quando:
 
 ## Próximo passo exato vigente
 
-Fase 3: começar pela tabela/grid reutilizável de ações, com busca/ordenação e dados ausentes explícitos. FIIs devem indicar cobertura indisponível até fonte pública adequada; preservar escopo, sem login/carteira/IA nem provisionamento pago.
+Fase 4: completar cabeçalho individual e cards dos indicadores disponíveis. Usar MarketDataProvider e os contratos normalizados. Verificar disponibilidade pública de histórico/proventos/fundamentos antes de implementar; ausências devem virar bloqueio explícito para o núcleo, nunca fixture em produção. Sem rankings/screener antecipados, sem login/carteira/IA nem credencial no frontend.
 
 ## Publicação da Fase 2 confirmada
 
@@ -213,4 +213,8 @@ Commit `680f0e3`, execução https://github.com/luandev93/radarB3/actions/runs/3
 
 ## Listagem implementada (2026-10-01)
 
-AssetList/AssetTable e seleção local em services/listing são os donos da Fase 3. Não duplicar tabela nas próximas telas. Cache/fila continuam no provider; busca e filtros não provocam chamadas adicionais. URL conserva q/filter/sort/dir; null sempre por último, independentemente da direção. Paginação dispensada com quatro registros. FIIs separado com ausência explícita, sem consulta indevida. A entrega ainda não amplia o universo de ativos nem oferece indicadores completos. Publicação a validar conforme STATUS; ao concluir, seguir Fase 4.
+AssetList/AssetTable e seleção local em services/listing são os donos da Fase 3. Não duplicar tabela nas próximas telas. Cache/fila continuam no provider; busca e filtros não provocam chamadas adicionais. URL conserva q/filter/sort/dir; null sempre por último, independentemente da direção. Paginação dispensada com quatro registros. FIIs separado com ausência explícita, sem consulta indevida. A entrega ainda não amplia o universo de ativos nem oferece indicadores completos. Publicação validada; seguir Fase 4 conforme STATUS.
+
+## Publicação da Fase 3 confirmada
+
+Commit `6644e74`; execução https://github.com/luandev93/radarB3/actions/runs/36928611178 : build/deploy success. Lista real dos quatro ativos no Pages, busca por nome, recarga, filtro negativo, ordenação por preço, acesso ao ativo e ausência FII validados no navegador. Fase ativa passa a Fase 4. Conclusão da interface de listagem não equivale à cobertura completa da B3; limitação da fonte permanece.
