@@ -1,0 +1,31 @@
+{
+  "results": [
+    {
+      "requestedSymbol": "PETR4",
+      "symbol": "PETR4",
+      "changed": false,
+      "data": {
+        "shortName": "PETR4",
+        "longName": "Petroleo Brasileiro SA Pfd",
+        "currency": "BRL",
+        "regularMarketPrice": 49.77,
+        "regularMarketDayHigh": 50.03,
+        "regularMarketDayLow": 49.13,
+        "regularMarketDayRange": "49.13 - 50.03",
+        "regularMarketChange": 0.65,
+        "regularMarketChangePercent": 1.32,
+        "regularMarketTime": "2026-10-01T20:59:30.000Z",
+        "marketCap": 661802597056,
+        "regularMarketVolume": 34104900,
+        "regularMarketPreviousClose": 49.9,
+        "regularMarketOpen": 49.66,
+        "fiftyTwoWeekRange": "29.31 - 50.7",
+        "fiftyTwoWeekLow": 29.31,
+        "fiftyTwoWeekHigh": 50.7,
+        "logourl": "https://icons.brapi.dev/icons/PETR4.svg"
+      }
+    }
+  ],
+  "requestedAt": "2026-10-01T21:00:56.552Z",
+  "took": 0
+}

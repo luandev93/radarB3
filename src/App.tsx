@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { QuotePreview } from './components/QuotePreview'
 import {
   HashRouter,
   Link,
@@ -41,9 +42,9 @@ function DataAvailability() {
   return (
     <div className="availability">
       <span className="status-dot" />
-      Dados ainda não conectados{' '}
+      Cobertura inicial limitada{' '}
       <span className="metadata">
-        Fonte: indisponível · Atualização: indisponível
+        Fonte e atualização identificadas na consulta de cada ativo
       </span>
     </div>
   )
@@ -90,7 +91,9 @@ function Home() {
       <div className="preview-link">
         <div>
           <strong>Conheça a página de um ativo</strong>
-          <p>Estrutura inicial, sem cotações ou indicadores de mercado.</p>
+          <p>
+            Consulta inicial de cotação, com origem e atualização identificadas.
+          </p>
         </div>
         <Link className="text-link" to="/ativo/PETR4">
           Abrir PETR4 →
@@ -135,29 +138,9 @@ function AssetPage() {
           <div className="eyebrow">PÁGINA DO ATIVO</div>
           <h1>{normalized}</h1>
         </div>
-        <span className="badge">Sem dados de mercado</span>
+        <span className="badge">Acesso inicial sem token</span>
       </div>
-      <p className="intro">
-        A identificação e os indicadores deste ativo ainda não foram
-        consultados.
-      </p>
-      <section className="metric-grid" aria-label="Indicadores indisponíveis">
-        {['Cotação', 'Variação', 'Dividend Yield', 'P/VP'].map((label) => (
-          <div className="metric" key={label}>
-            <h2>{label}</h2>
-            <strong aria-label="Indisponível">—</strong>
-            <span>Indisponível</span>
-          </div>
-        ))}
-      </section>
-      <section className="empty-panel">
-        <h2>A análise começa com a origem dos dados</h2>
-        <p>
-          Preço, fundamentos e histórico aparecerão aqui quando houver
-          informações disponíveis e verificadas.
-        </p>
-        <DataAvailability />
-      </section>
+      <QuotePreview ticker={normalized} />
     </>
   )
 }

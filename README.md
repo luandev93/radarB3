@@ -2,7 +2,7 @@
 
 RadarB3 é um screener e painel de análise de ativos da B3, criado para consolidar dados de mercado e fundamentos em uma interface rápida, filtrável e orientada à comparação.
 
-> Status atual: Fase 1 concluída; frontend publicado no GitHub Pages. Fase 2 pronta para iniciar. Nenhuma recomendação de investimento é produzida pelo sistema. Os indicadores são informativos e devem exibir fonte e data de atualização.
+> Status atual: Fase 2 implementada; publicação da camada de dados em validação. Frontend no GitHub Pages. Nenhuma recomendação de investimento é produzida pelo sistema. Os indicadores são informativos e devem exibir fonte e data de atualização.
 
 ## Objetivo do MVP
 
@@ -206,7 +206,7 @@ npx playwright install chromium
 npm run test:e2e
 ```
 
-O Vite usa `/radarB3/` como base. O React Router usa hash para permitir acesso direto e recarga no GitHub Pages sem regras de servidor. Exemplo: `/radarB3/#/ativo/PETR4`. A integração de dados começa na Fase 2; os valores, fonte e atualização ausentes aparecem explicitamente como indisponíveis.
+O Vite usa `/radarB3/` como base. O React Router usa hash para permitir acesso direto e recarga no GitHub Pages sem regras de servidor. Exemplo: `/radarB3/#/ativo/PETR4`. A camada de dados consulta PETR4, VALE3, ITUB4 e MGLU3 no sandbox brapi sem token. A página do ativo exibe cotação, fonte e horário; fundamentos ausentes são indisponíveis. Outros ativos e FIIs ainda não têm cobertura. Limites e unidades estão em [docs/DATA_SOURCES.md](docs/DATA_SOURCES.md). `.env.example` contém somente configurações públicas de timeout/cache.
 
 ## Publicação
 

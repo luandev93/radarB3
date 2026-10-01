@@ -211,15 +211,15 @@ Critério de saída:
 
 Entregáveis:
 
-- [ ] criar `src/services`
-- [ ] criar tipos de domínio
-- [ ] criar adaptador da fonte de dados
-- [ ] centralizar configuração por env
-- [ ] tratamento de loading/error/empty
-- [ ] normalização de números e datas
-- [ ] exibir fonte e timestamp
-- [ ] criar fixtures para desenvolvimento/testes
-- [ ] mapear limites reais do free tier usado
+- [x] criar `src/services`
+- [x] criar tipos de domínio
+- [x] criar adaptador da fonte de dados
+- [x] centralizar configuração por env
+- [x] tratamento de loading/error/empty
+- [x] normalização de números e datas
+- [x] exibir fonte e timestamp
+- [x] criar fixtures para desenvolvimento/testes
+- [x] mapear limites reais do free tier usado
 
 Critério de saída:
 

@@ -199,6 +199,17 @@ Somente avançar quando:
 - Home retorna HTTP 200. Todas as seis rotas públicas e recarga foram verificadas no navegador de sessão. Testes responsivos e axe passaram no job build.
 - Nenhuma fonte financeira conectada; a tela mostra ausência explícita de valores, fonte e atualização.
 
+## Camada de dados (2026-10-01)
+
+- Fase 2 implementada, aguardando deploy/validação pública; STATUS é a autoridade para fase ativa.
+- Fonte brapi v2, endpoint público sandbox sem token. Allowlist PETR4/VALE3/ITUB4/MGLU3, limitada para evitar exigência de segredo no frontend.
+- MarketDataProvider separa componentes e formato externo. Substituir fonte no adaptador, preservando contratos.
+- Cache em memória cinco minutos, timeout dez segundos, deduplicação, fila sequencial e cooldown Retry-After. Env só contém timeout/TTL públicos.
+- updatedAt é horário da cotação; retrievedAt é momento da consulta. Atraso desconhecido; ausência nunca vira zero nem atualização artificial.
+- Fundamentos, histórico, proventos e FIIs ainda indisponíveis; não preencher com fixtures nem inferências. DATA_SOURCES documenta limites e referências oficiais.
+- A FAQ distingue sandbox aberto e free tier autenticado. Não colocar chave privada no Pages para obter o universo completo; Railway continua reservado à fase prevista/necessidade comprovada.
+- Fixture capturada da resposta v2 é exclusiva de testes. Preview do ativo valida serviços e estados; não antecipa implementação completa da Fase 4.
+
 ## Próximo passo exato vigente
 
-Fase 2: criar src/services e tipos de domínio conforme MVP_PLAN. Definir null, unidade, fonte, timestamp e atraso conhecido/desconhecido. Depois criar adaptador com fixtures de teste e verificar os limites reais brapi free tier. Não reiniciar planejamento, não expandir para carteira/IA/login e não provisionar Railway antes da necessidade/fase prevista. Continuar atualizando STATUS em cada commit relevante.
+Publicar a Fase 2 e validar cotação real no Pages. Após registrar evidências, ativar Fase 3 e começar pela tabela/grid reutilizável de ações, com busca/ordenação e dados ausentes explícitos. FIIs devem indicar cobertura indisponível até fonte pública adequada; preservar escopo, sem login/carteira/IA nem provisionamento pago.

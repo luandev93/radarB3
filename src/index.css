@@ -416,3 +416,22 @@ footer p {
     forced-color-adjust: auto;
   }
 }
+.data-panel {
+  min-height: 230px;
+}
+.metric .quote-value {
+  font-size: clamp(20px, 3vw, 30px);
+  overflow-wrap: anywhere;
+}
+button.button {
+  border: 0;
+  cursor: pointer;
+  font-family: inherit;
+}
+button.button:focus-visible {
+  outline: 3px solid var(--brand);
+  outline-offset: 5px;
+}
+button.button:active {
+  opacity: 0.8;
+}

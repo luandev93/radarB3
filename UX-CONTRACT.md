@@ -6,19 +6,22 @@ README.md, docs/MVP_PLAN.md e docs/HANDOFF.md definem o MVP, ausência de recome
 
 ## Donos canônicos
 
-| Capacidade          | Dono                            | Verificação                                |
-| ------------------- | ------------------------------- | ------------------------------------------ |
-| Navegação           | Shell / React Router HashRouter | App.test.tsx e tests/navigation.spec.ts    |
-| Estado indisponível | SectionPage e DataAvailability  | Testes de todas as rotas                   |
-| Scrollbar           | src/index.css global            | Auditoria e inspeção do navegador          |
-| Página do ativo     | AssetPage                       | Ticker válido/inválido e métricas ausentes |
+| Capacidade          | Dono                                 | Verificação                               |
+| ------------------- | ------------------------------------ | ----------------------------------------- |
+| Navegação           | Shell / React Router HashRouter      | App.test.tsx e tests/navigation.spec.ts   |
+| Estado indisponível | SectionPage e DataAvailability       | Testes de todas as rotas                  |
+| Scrollbar           | src/index.css global                 | Auditoria e inspeção do navegador         |
+| Página do ativo     | AssetPage / QuotePreview             | Ticker válido/inválido e estados remotos  |
+| Dados de mercado    | MarketDataProvider / adaptador brapi | Normalização, cache, timeout e rate limit |
 
 ## Comportamento
 
 Rotas preservadas no hash para recarga estática no GitHub Pages. Base do Vite: /radarB3/. Navegação atual identificada por aria-current. Cada mudança de rota atualiza título, leva foco ao conteúdo principal e retorna ao topo. Link de pular conteúdo mantém o hash de rota. Página não encontrada conserva navegação e retorno ao início.
 
-Todas as rotas são públicas. UI em pt-BR. Estado atual é sem integração; não existe loading, falha remota, busca, paginação ou recomendação. Quando introduzidos em fases posteriores, os estados devem ser definidos antes da implementação. Não simular requisições ou exibir valores financeiros artificiais.
+Todas as rotas são públicas. UI em pt-BR. QuotePreview tem estados de carregamento, pronto, vazio e erro. Reservar altura no carregamento; mostrar erro em pt-BR e botão de nova tentativa quando recuperável. Rate limit informa espera e o serviço impede consulta antecipada. Ativo fora da cobertura e autenticação exigida não oferecem repetição inútil. Trocar ticker descarta resposta anterior. Pronto mostra cotação/variação, fonte, horário de mercado e consulta separados; atraso desconhecido e fundamentos indisponíveis permanecem explícitos. A fixture é exclusiva de testes. Não existe busca, paginação ou recomendação nesta fase.
 
 ## Verificação
 
-Vitest cobre navegação, metadados indisponíveis, ticker e endereço inválido. Playwright cobre as seis rotas e 404, recarga, navegação, ausência de overflow e erros JS em 390px e 1280px. Axe verifica regras automatizadas WCAG AA; isso não equivale a certificação completa.
+Vitest cobre navegação, contratos, números/datas nulos, cache, deduplicação, fila, timeout, erros, limites e descarte de respostas obsoletas. Playwright cobre as seis rotas e 404, recarga, navegação, ausência de overflow e erros JS em 390px e 1280px. Axe verifica regras automatizadas WCAG AA; isso não equivale a certificação completa.
+
+Os cartões e botões reutilizam os tokens de DESIGN.md. Não há biblioteca paralela de componentes; QuotePreview é o dono dos estados remotos.
