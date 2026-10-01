@@ -2,7 +2,7 @@
 
 RadarB3 é um screener e painel de análise de ativos da B3, criado para consolidar dados de mercado e fundamentos em uma interface rápida, filtrável e orientada à comparação.
 
-> Status atual: frontend inicial implementado; publicação em validação. Nenhuma recomendação de investimento é produzida pelo sistema. Os indicadores são informativos e devem exibir fonte e data de atualização.
+> Status atual: frontend inicial implementado e validado; publicação aguardando habilitação do GitHub Pages. Nenhuma recomendação de investimento é produzida pelo sistema. Os indicadores são informativos e devem exibir fonte e data de atualização.
 
 ## Objetivo do MVP
 
@@ -210,6 +210,6 @@ O Vite usa `/radarB3/` como base. O React Router usa hash para permitir acesso d
 
 ## Publicação
 
-URL prevista (validar em STATUS): https://luandev93.github.io/radarB3/
+URL prevista (**ainda não publicada**, bloqueio em docs/STATUS.md): https://luandev93.github.io/radarB3/
 
 O workflow `.github/workflows/pages.yml` executa formatter, ESLint, Vitest, build e testes de navegador antes do deploy. Push em `main` publica via GitHub Actions. PRs só validam. Nas configurações do repositório, Pages deve usar **GitHub Actions** como fonte; o workflow tenta habilitar Pages quando permitido.

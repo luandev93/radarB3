@@ -17,7 +17,7 @@ Estado recebido:
 - plano detalhado criado;
 - status vivo criado;
 - governança de commits criada;
-- frontend Fase 1 implementado; publicação e validação pública pendentes, conforme STATUS.
+- frontend Fase 1 implementado e validado em main (`bc23003`); publicação bloqueada na habilitação administrativa de Pages, conforme STATUS.
 
 ## Leitura obrigatória antes de editar código
 
@@ -193,4 +193,10 @@ Somente avançar quando:
 
 ## Próximo passo exato vigente
 
-Terminar validação local do navegador, enviar bootstrap a main, verificar GitHub Actions e URL pública. Registrar evidências e só então mudar para Fase 2.
+Habilitar Pages em https://github.com/luandev93/radarB3/settings/pages com Source: GitHub Actions. Reexecutar deploy, validar URL e recarga das seis rotas. Só então concluir Fase 1 e mudar para Fase 2.
+
+## Bloqueio confirmado de publicação
+
+Bootstrap publicado em main no commit `bc23003`. Execução https://github.com/luandev93/radarB3/actions/runs/36914250896 : guard e job build passaram, incluindo Playwright. Deploy falhou antes da publicação: `Create Pages site failed: Resource not accessible by integration`. Pages inexistente (404), e GITHUB_TOKEN não pode fazer a primeira habilitação. O conector não expõe Settings/Pages. Não é falha do bundle ou da aplicação.
+
+Não repetir bootstrap, não reiniciar plano e não tentar corrigir esse erro com tokens no frontend. Após selecionar Source: GitHub Actions, reexecutar somente os jobs com falha; o artefato já foi gerado. Se expirado, executar o workflow completo. URL ainda não validada: https://luandev93.github.io/radarB3/ .
