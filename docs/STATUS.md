@@ -1,19 +1,20 @@
 # RadarB3 — Status vivo
 
 Última atualização: 2026-10-01
-Fase ativa: **Fase 2 — Camada de dados (implementada, aguardando validação da publicação)**
-Estado geral: **CHECKS LOCAIS VERDES — PUBLICAÇÃO PENDENTE**
+Fase ativa: **Fase 3 — Lista de ações e FIIs (pronta para iniciar)**
+Estado geral: **FASE 2 CONCLUÍDA — PUBLICADA E VALIDADA**
 
 ## Último commit registrado
 
 - Baseline: `eaf94c5` — conclusão da Fase 1 publicada.
-- Este commit: `feat(data): add typed brapi sandbox provider and quote states`.
+- Último commit de implementação: `680f0e3` — `feat(data): add typed brapi sandbox provider and quote states`.
+- Este registro: `docs(status): complete phase 2 after public data validation`.
 
 ## Progresso global
 
 - [x] Fase 0 — Bootstrap e governança
 - [x] Fase 1 — Frontend + GitHub Pages
-- [x] Fase 2 — Camada de dados (implementação; deploy a validar)
+- [x] Fase 2 — Camada de dados
 - [ ] Fase 3 — Ações e FIIs
 - [ ] Fase 4 — Página individual
 - [ ] Fase 5 — Rankings
@@ -21,7 +22,7 @@ Estado geral: **CHECKS LOCAIS VERDES — PUBLICAÇÃO PENDENTE**
 - [ ] Fase 7 — Railway/PostgreSQL
 - [ ] Fase 8 — Release MVP
 
-## Concluído neste commit
+## Concluído na Fase 2
 
 - src/services e tipos Asset, Quote, Fundamentals, Dividend, PricePoint, proveniência e interface MarketDataProvider.
 - Adaptador brapi v2 sem token para PETR4, VALE3, ITUB4 e MGLU3, sem JSON externo na UI.
@@ -39,7 +40,11 @@ Estado geral: **CHECKS LOCAIS VERDES — PUBLICAÇÃO PENDENTE**
 - Captura da página do ativo em 390px inspecionada: preços e origem legíveis, sem corte.
 - Resposta real v2 PETR4 HTTP 200 e CORS público verificados; a fixture preserva essa resposta.
 - format:check passou; git diff --check passou; auditoria estática premium strict: zero findings.
-- Publicação desta implementação ainda não validada. Site anterior da Fase 1 permanece em https://luandev93.github.io/radarB3/ .
+- GitHub Actions https://github.com/luandev93/radarB3/actions/runs/36926921905 : success. Build e deploy passaram; guard STATUS também passou.
+- Publicação validada no navegador: PETR4 consultado da fonte real, cotação/variação presentes, DY/P/VP ausentes explícitos, fonte brapi sandbox.
+- Horário de mercado exibido 01/10/2026 18:11:30 e consulta 18:13:14 (Brasília), separados. Atraso permanece desconhecido.
+- HGLG11 mostra cobertura limitada e conserva o estado após reload; navegação para home funciona.
+- URL: https://luandev93.github.io/radarB3/ — HTTP 200 confirmado.
 
 ## Bloqueios e limites
 
@@ -47,4 +52,4 @@ Nenhum bloqueio para o sandbox. Cobertura completa de ações/FIIs e fundamentos
 
 ## Próximo passo exato
 
-Publicar este commit em main, aguardar GitHub Actions e validar no navegador público a cotação real e o estado de cobertura limitada. Registrar evidências no STATUS/HANDOFF. Depois iniciar Fase 3 pelo primeiro item: tabela/grid reutilizável, com cobertura e valores nulos explícitos.
+Iniciar Fase 3 pelo primeiro item pendente: tabela/grid reutilizável de ações e FIIs. Usar MarketDataProvider, começar pela cobertura real do sandbox e indicar FIIs/fundamentos indisponíveis. Em seguida busca por ticker/nome, ordenação de números negativos/null e filtros rápidos. Não antecipar rankings/screener nem expor credenciais para ampliar a cobertura.

@@ -17,7 +17,7 @@ Estado recebido:
 - plano detalhado criado;
 - status vivo criado;
 - governança de commits criada;
-- Fase 1 concluída e publicada a partir de `bc23003`; fase ativa agora é Fase 2, conforme STATUS.
+- Fase 1 publicada a partir de `bc23003`; Fase 2 publicada a partir de `680f0e3`; fase ativa agora é Fase 3, conforme STATUS.
 
 ## Leitura obrigatória antes de editar código
 
@@ -70,9 +70,9 @@ O GitHub Pages é estático. Portanto:
 
 ## Fase atual
 
-**Fase 2 — Camada de dados**
+**Fase 3 — Lista de ações e FIIs**
 
-A Fase 1 está concluída. Não repetir bootstrap; iniciar por src/services e tipos de domínio. A execução abaixo é o histórico do bootstrap.
+As Fases 1 e 2 estão concluídas. Não repetir bootstrap/camada de dados; iniciar tabela/grid reutilizável da Fase 3. A execução abaixo é o histórico do bootstrap.
 
 ### Execução esperada
 
@@ -161,16 +161,9 @@ A primeira entrega publicada deve permitir:
 
 ## Próximo commit sugerido
 
-`feat(web): bootstrap Vite React app and routes`
+`feat(assets): add reusable asset table for sandbox coverage`
 
-Esse commit deve incluir:
-
-- app inicial;
-- rotas;
-- layout;
-- configuração base;
-- testes básicos;
-- atualização de `docs/STATUS.md`.
+Esse commit deve iniciar Fase 3, preservar cobertura/ausências explícitas, incluir validações adequadas e atualizar STATUS no mesmo commit.
 
 ## Critério para passar à Fase 2
 
@@ -201,7 +194,7 @@ Somente avançar quando:
 
 ## Camada de dados (2026-10-01)
 
-- Fase 2 implementada, aguardando deploy/validação pública; STATUS é a autoridade para fase ativa.
+- Fase 2 concluída e publicada; STATUS é a autoridade para fase ativa.
 - Fonte brapi v2, endpoint público sandbox sem token. Allowlist PETR4/VALE3/ITUB4/MGLU3, limitada para evitar exigência de segredo no frontend.
 - MarketDataProvider separa componentes e formato externo. Substituir fonte no adaptador, preservando contratos.
 - Cache em memória cinco minutos, timeout dez segundos, deduplicação, fila sequencial e cooldown Retry-After. Env só contém timeout/TTL públicos.
@@ -212,4 +205,8 @@ Somente avançar quando:
 
 ## Próximo passo exato vigente
 
-Publicar a Fase 2 e validar cotação real no Pages. Após registrar evidências, ativar Fase 3 e começar pela tabela/grid reutilizável de ações, com busca/ordenação e dados ausentes explícitos. FIIs devem indicar cobertura indisponível até fonte pública adequada; preservar escopo, sem login/carteira/IA nem provisionamento pago.
+Fase 3: começar pela tabela/grid reutilizável de ações, com busca/ordenação e dados ausentes explícitos. FIIs devem indicar cobertura indisponível até fonte pública adequada; preservar escopo, sem login/carteira/IA nem provisionamento pago.
+
+## Publicação da Fase 2 confirmada
+
+Commit `680f0e3`, execução https://github.com/luandev93/radarB3/actions/runs/36926921905 : success. Navegador público consultou PETR4 com cotação/variação reais e fonte/horários separados; HGLG11 mostrou cobertura limitada antes e após reload. A fase ativa passa a Fase 3. Não confundir conclusão dos contratos/adaptador com cobertura financeira completa.
