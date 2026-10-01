@@ -435,3 +435,131 @@ button.button:focus-visible {
 button.button:active {
   opacity: 0.8;
 }
+.list-controls {
+  margin: 28px 0 20px;
+}
+.list-controls label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.search-field {
+  display: flex;
+  gap: 8px;
+  max-width: 570px;
+}
+.search-field input {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 12px;
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+}
+input:focus-visible,
+button:focus-visible,
+.table-scroll:focus-visible {
+  outline: 3px solid var(--brand);
+  outline-offset: 3px;
+}
+.quiet-button {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 10px 12px;
+  color: var(--ink);
+  background: var(--surface);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+.quiet-button:hover {
+  border-color: var(--brand);
+}
+.quiet-button[aria-pressed='true'] {
+  background: var(--brand);
+  color: var(--surface);
+  border-color: var(--brand);
+}
+.quick-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+.coverage-note {
+  color: var(--muted);
+  font-size: 14px;
+  max-width: 800px;
+}
+.table-scroll {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+}
+.asset-table {
+  width: 100%;
+  min-width: 1400px;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.asset-table th,
+.asset-table td {
+  padding: 16px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+.asset-table thead {
+  background: #edf2f8;
+}
+.asset-table tbody tr:last-child > * {
+  border-bottom: 0;
+}
+.asset-table tbody tr:hover {
+  background: #f5f8fc;
+}
+.sort-button {
+  color: var(--muted);
+  font: inherit;
+  font-weight: 600;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  min-height: 40px;
+  padding: 4px;
+  text-align: left;
+}
+.asset-table .numeric {
+  font-family: Consolas, monospace;
+  font-variant-numeric: tabular-nums;
+}
+.asset-table td:nth-child(2) {
+  max-width: 240px;
+  overflow-wrap: anywhere;
+}
+.provenance {
+  min-width: 240px;
+}
+.provenance span {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+.table-skeleton {
+  height: 10px;
+  max-width: 680px;
+  background: var(--line);
+  border-radius: 4px;
+  margin-top: 12px;
+}
+.row-error p {
+  margin: 0 0 8px;
+}
+.asset-table tbody th {
+  white-space: nowrap;
+}

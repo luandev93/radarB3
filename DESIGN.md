@@ -51,7 +51,7 @@ Display em Trebuchet para títulos, sans em Segoe UI para controles e texto, mon
 
 ## Layout
 
-Conteúdo até 1136px com margens de 32px; em telas estreitas, 20px. Navegação quebra linhas sem ocultar destinos. Cards em duas colunas a partir de 768px, uma abaixo disso. Rolagem pertence ao documento. Home apresenta entrada para as quatro áreas; telas irmãs compartilham layout e estado indisponível.
+Conteúdo até 1136px com margens de 32px; em telas estreitas, 20px. Navegação quebra linhas sem ocultar destinos. Cards em duas colunas a partir de 768px, uma abaixo disso. Rolagem pertence ao documento. Home apresenta entrada para as quatro áreas; telas irmãs compartilham layout e estados. A tabela de ativos mantém colunas comparáveis com rolagem horizontal dentro de uma região focável e instrução explícita, sem criar overflow no documento. Não há coluna fixa que cubra o foco.
 
 ## Elevation & Depth
 
@@ -71,3 +71,7 @@ Shell, DataAvailability e SectionPage centralizam navegação, metadados e estad
 - Preservar acesso por teclado, contraste e navegação em celular.
 - Não usar valores fictícios, fontes inventadas, timestamp de build como timestamp de cotação ou promessa de tempo real.
 - Não introduzir controles de filtros que ainda não funcionam.
+
+## Listagem de ativos
+
+AssetList centraliza busca e filtros; AssetTable centraliza a tabela semântica, ordenação e estados por linha. Busca e botões usam as cores/raios existentes. Cabeçalho usa o token de scrollbar track; skeleton estático usa line, sem animação. Dados numéricos usam mono e tabular-nums. A navegação usa o ticker como link nativo. Sem paginação para quatro ativos.

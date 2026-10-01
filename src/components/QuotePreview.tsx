@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { dataErrorMessages } from './dataErrors'
 import { marketData } from '../services'
 import { DataError } from '../services/domain'
 import type { AssetSnapshot } from '../services/domain'
@@ -9,19 +10,6 @@ type State =
   | { status: 'empty' }
   | { status: 'error'; error: DataError }
   | { status: 'ready'; data: AssetSnapshot }
-const errors = {
-  unsupported:
-    'Este ativo não está disponível no acesso sem token. Nesta etapa, consulte PETR4, VALE3, ITUB4 ou MGLU3.',
-  network:
-    'Não foi possível consultar a fonte. Verifique sua conexão e tente novamente.',
-  timeout: 'A consulta demorou além do limite. Tente novamente.',
-  auth: 'A fonte exige autenticação ou um plano diferente para esta consulta.',
-  'rate-limit':
-    'A fonte limitou as consultas. Aguarde o prazo informado antes de tentar novamente.',
-  'invalid-response':
-    'A fonte retornou dados em um formato inesperado. Tente novamente mais tarde.',
-  server: 'A fonte está indisponível no momento. Tente novamente mais tarde.',
-}
 function QuoteContent({ ticker }: { ticker: string }) {
   const [state, setState] = useState<State>({ status: 'loading' })
   const [attempt, setAttempt] = useState(0)
@@ -63,7 +51,7 @@ function QuoteContent({ ticker }: { ticker: string }) {
     return (
       <section className="empty-panel data-panel" role="status">
         <h2>Cotação indisponível</h2>
-        <p>{errors[state.error.code]}</p>
+        <p>{dataErrorMessages[state.error.code]}</p>
         {state.error.retryAfterSeconds !== null && (
           <p>Aguarde ao menos {state.error.retryAfterSeconds} segundos.</p>
         )}

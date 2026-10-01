@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { AssetList } from './components/AssetList'
 import { QuotePreview } from './components/QuotePreview'
 import {
   HashRouter,
@@ -226,7 +227,15 @@ function Shell() {
               <Route
                 key={section.path}
                 path={section.path}
-                element={<SectionPage section={section} />}
+                element={
+                  section.path === '/acoes' ? (
+                    <AssetList type="STOCK" />
+                  ) : section.path === '/fiis' ? (
+                    <AssetList type="FII" />
+                  ) : (
+                    <SectionPage section={section} />
+                  )
+                }
               />
             ))}
             <Route path="/ativo/:ticker" element={<AssetPage />} />

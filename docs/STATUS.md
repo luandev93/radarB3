@@ -1,14 +1,14 @@
 # RadarB3 — Status vivo
 
 Última atualização: 2026-10-01
-Fase ativa: **Fase 3 — Lista de ações e FIIs (pronta para iniciar)**
-Estado geral: **FASE 2 CONCLUÍDA — PUBLICADA E VALIDADA**
+Fase ativa: **Fase 3 — Lista de ações e FIIs (implementada; publicação a validar)**
+Estado geral: **FASE 3 IMPLEMENTADA — CHECKS VERDES, PUBLICAÇÃO A VALIDAR**
 
 ## Último commit registrado
 
 - Baseline: `eaf94c5` — conclusão da Fase 1 publicada.
 - Último commit de implementação: `680f0e3` — `feat(data): add typed brapi sandbox provider and quote states`.
-- Este registro: `docs(status): complete phase 2 after public data validation`.
+- Este commit: `feat(assets): add searchable sortable sandbox asset table`.
 
 ## Progresso global
 
@@ -22,29 +22,27 @@ Estado geral: **FASE 2 CONCLUÍDA — PUBLICADA E VALIDADA**
 - [ ] Fase 7 — Railway/PostgreSQL
 - [ ] Fase 8 — Release MVP
 
-## Concluído na Fase 2
+## Concluído nesta entrega
 
-- src/services e tipos Asset, Quote, Fundamentals, Dividend, PricePoint, proveniência e interface MarketDataProvider.
-- Adaptador brapi v2 sem token para PETR4, VALE3, ITUB4 e MGLU3, sem JSON externo na UI.
-- Cache em memória, deduplicação, fila de concorrência 1, timeout e Retry-After para 429.
-- Configuração pública validada em env; sem segredos, scraping ou infraestrutura paga.
-- Normalização de números/datas, null explícito, fonte e timestamps de mercado/consulta separados.
-- Estados loading/error/empty/ready e nova tentativa; descarte de resposta de ticker anterior.
-- Fixture real exclusiva dos testes e limites documentados em DATA_SOURCES.
-- Página de ativo recebe apenas prévia de cotação para validar a camada; gráficos, proventos e fundamentos completos continuam na Fase 4.
+- Tabela reutilizável de dez colunas com links ao ativo, fonte e horário por linha.
+- Busca por ticker/nome e filtros rápidos: todas, com cotação, variação positiva/negativa.
+- Ordenação em todas as colunas, null ao final nas duas direções e desempate previsível.
+- Busca/filtro/ordenação na URL; recarga/retorno preservam o recorte.
+- Consultas progressivas com skeleton por linha, erros parciais e retry individual.
+- Ações e FIIs separados. FIIs mostra cobertura indisponível; não há fundo fictício.
+- Quatro registros não justificam paginação/virtualização; decisão registrada.
+- Mensagens de erro compartilhadas com a prévia do ativo; contratos de UI/design atualizados.
 
 ## Testes e validações
 
-- ESLint, Vitest (19 testes) e build TypeScript/Vite passaram.
-- Playwright: três testes; seis rotas e 404, reload, 390px/1280px, cotação, erro/retry/vazio/cobertura; sem overflow/erros JS e axe sem violações nas rotas.
-- Captura da página do ativo em 390px inspecionada: preços e origem legíveis, sem corte.
-- Resposta real v2 PETR4 HTTP 200 e CORS público verificados; a fixture preserva essa resposta.
-- format:check passou; git diff --check passou; auditoria estática premium strict: zero findings.
-- GitHub Actions https://github.com/luandev93/radarB3/actions/runs/36926921905 : success. Build e deploy passaram; guard STATUS também passou.
-- Publicação validada no navegador: PETR4 consultado da fonte real, cotação/variação presentes, DY/P/VP ausentes explícitos, fonte brapi sandbox.
-- Horário de mercado exibido 01/10/2026 18:11:30 e consulta 18:13:14 (Brasília), separados. Atraso permanece desconhecido.
-- HGLG11 mostra cobertura limitada e conserva o estado após reload; navegação para home funciona.
-- URL: https://luandev93.github.io/radarB3/ — HTTP 200 confirmado.
+- Vitest: 27 testes passaram, incluindo null/negativo/zero, filtros e falha parcial/retry.
+- ESLint passou após correção do fluxo de carregamento no effect.
+- TypeScript/Vite build passou após corrigir opção de teste incompatível com Testing Library.
+- Playwright: seis testes passaram em 390px/1280px; seis rotas/404, reload, busca, filtro, teclado, retorno, erro/retry/vazio e axe.
+- Capturas da lista mobile/desktop inspecionadas; rolagem contida, sem overflow no documento. Ticker ajustado para não quebrar linha.
+- format:check e git diff --check passaram. Auditoria premium strict: zero findings. DESIGN lint: zero erros (três avisos de tokens órfãos já existentes).
+- Revalidação final: lint, 27 testes, TypeScript/build e seis testes E2E passaram. Publicação ainda a validar.
+- Site público ainda corresponde à Fase 2: https://luandev93.github.io/radarB3/ .
 
 ## Bloqueios e limites
 
@@ -52,4 +50,4 @@ Nenhum bloqueio para o sandbox. Cobertura completa de ações/FIIs e fundamentos
 
 ## Próximo passo exato
 
-Iniciar Fase 3 pelo primeiro item pendente: tabela/grid reutilizável de ações e FIIs. Usar MarketDataProvider, começar pela cobertura real do sandbox e indicar FIIs/fundamentos indisponíveis. Em seguida busca por ticker/nome, ordenação de números negativos/null e filtros rápidos. Não antecipar rankings/screener nem expor credenciais para ampliar a cobertura.
+Concluir checks finais, publicar a lista e validar no Pages a tabela real, busca, ordenação, recarga e FIIs indisponíveis. Depois registrar conclusão da Fase 3 e iniciar Fase 4 pelo cabeçalho do ativo, preservando limites de cobertura para gráficos/proventos/fundamentos.

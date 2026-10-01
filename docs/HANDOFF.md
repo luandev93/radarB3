@@ -210,3 +210,7 @@ Fase 3: começar pela tabela/grid reutilizável de ações, com busca/ordenaçã
 ## Publicação da Fase 2 confirmada
 
 Commit `680f0e3`, execução https://github.com/luandev93/radarB3/actions/runs/36926921905 : success. Navegador público consultou PETR4 com cotação/variação reais e fonte/horários separados; HGLG11 mostrou cobertura limitada antes e após reload. A fase ativa passa a Fase 3. Não confundir conclusão dos contratos/adaptador com cobertura financeira completa.
+
+## Listagem implementada (2026-10-01)
+
+AssetList/AssetTable e seleção local em services/listing são os donos da Fase 3. Não duplicar tabela nas próximas telas. Cache/fila continuam no provider; busca e filtros não provocam chamadas adicionais. URL conserva q/filter/sort/dir; null sempre por último, independentemente da direção. Paginação dispensada com quatro registros. FIIs separado com ausência explícita, sem consulta indevida. A entrega ainda não amplia o universo de ativos nem oferece indicadores completos. Publicação a validar conforme STATUS; ao concluir, seguir Fase 4.

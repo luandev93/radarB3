@@ -230,14 +230,14 @@ Critério de saída:
 
 Entregáveis:
 
-- [ ] tabela/grid reutilizável
-- [ ] busca por ticker/nome
-- [ ] ordenação
-- [ ] paginação ou virtualização se necessária
-- [ ] filtros rápidos
-- [ ] skeleton
-- [ ] estados de erro
-- [ ] separar ações e FIIs
+- [x] tabela/grid reutilizável
+- [x] busca por ticker/nome
+- [x] ordenação
+- [x] paginação ou virtualização se necessária — dispensada para quatro registros
+- [x] filtros rápidos
+- [x] skeleton
+- [x] estados de erro
+- [x] separar ações e FIIs
 
 Colunas mínimas:
 

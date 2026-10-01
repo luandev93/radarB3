@@ -18,9 +18,14 @@ describe('Navegação do RadarB3', () => {
     for (const title of ['Ações', 'FIIs', 'Rankings', 'Screener']) {
       await user.click(screen.getByRole('link', { name: title }))
       expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(title)
-      expect(
-        screen.getByText('Dados indisponíveis por enquanto'),
-      ).toBeInTheDocument()
+      if (title === 'FIIs')
+        expect(
+          screen.getByText('FIIs sem cobertura nesta etapa'),
+        ).toBeInTheDocument()
+      if (title === 'Rankings' || title === 'Screener')
+        expect(
+          screen.getByText('Dados indisponíveis por enquanto'),
+        ).toBeInTheDocument()
       expect(screen.getByText(/Fonte e atualização/)).toBeInTheDocument()
       expect(document.title).toBe(`${title} | RadarB3`)
       expect(screen.getByRole('link', { name: title })).toHaveAttribute(
