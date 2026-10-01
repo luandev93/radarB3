@@ -189,8 +189,8 @@ Entregáveis:
 - [x] criar navegação principal
 - [x] configurar `base` corretamente para `/radarB3/`
 - [x] criar workflow de build/deploy GitHub Pages
-- [ ] validar deploy público
-- [ ] registrar URL publicada em README e STATUS
+- [x] validar deploy público
+- [x] registrar URL publicada em README e STATUS
 
 Rotas:
 

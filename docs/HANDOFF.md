@@ -17,7 +17,7 @@ Estado recebido:
 - plano detalhado criado;
 - status vivo criado;
 - governança de commits criada;
-- frontend Fase 1 implementado e validado em main (`bc23003`); publicação bloqueada na habilitação administrativa de Pages, conforme STATUS.
+- Fase 1 concluída e publicada a partir de `bc23003`; fase ativa agora é Fase 2, conforme STATUS.
 
 ## Leitura obrigatória antes de editar código
 
@@ -70,9 +70,9 @@ O GitHub Pages é estático. Portanto:
 
 ## Fase atual
 
-**Fase 1 — Bootstrap frontend + GitHub Pages**
+**Fase 2 — Camada de dados**
 
-Comece por ela.
+A Fase 1 está concluída. Não repetir bootstrap; iniciar por src/services e tipos de domínio. A execução abaixo é o histórico do bootstrap.
 
 ### Execução esperada
 
@@ -191,12 +191,14 @@ Somente avançar quando:
 - Testes de navegador cobrem 390px e 1280px, seis rotas e 404, acesso direto e recarga. Playwright 1.51.1 fixado após falha de download do browser da versão mais recente no ambiente.
 - Workflow Pages valida antes de publicar em main; PR não publica. `configure-pages` tenta enablement. Se faltar permissão de habilitação, selecionar Settings → Pages → Source: GitHub Actions e reexecutar workflow. Não declarar Fase 1 concluída sem deploy e URL verificados.
 
+## Publicação confirmada (2026-10-01)
+
+- URL: https://luandev93.github.io/radarB3/ .
+- Execução https://github.com/luandev93/radarB3/actions/runs/36914250896 — tentativa 2: success.
+- O usuário habilitou Pages; reexecução do deploy pelo conector concluiu. O bloqueio `Resource not accessible by integration` foi resolvido.
+- Home retorna HTTP 200. Todas as seis rotas públicas e recarga foram verificadas no navegador de sessão. Testes responsivos e axe passaram no job build.
+- Nenhuma fonte financeira conectada; a tela mostra ausência explícita de valores, fonte e atualização.
+
 ## Próximo passo exato vigente
 
-Habilitar Pages em https://github.com/luandev93/radarB3/settings/pages com Source: GitHub Actions. Reexecutar deploy, validar URL e recarga das seis rotas. Só então concluir Fase 1 e mudar para Fase 2.
-
-## Bloqueio confirmado de publicação
-
-Bootstrap publicado em main no commit `bc23003`. Execução https://github.com/luandev93/radarB3/actions/runs/36914250896 : guard e job build passaram, incluindo Playwright. Deploy falhou antes da publicação: `Create Pages site failed: Resource not accessible by integration`. Pages inexistente (404), e GITHUB_TOKEN não pode fazer a primeira habilitação. O conector não expõe Settings/Pages. Não é falha do bundle ou da aplicação.
-
-Não repetir bootstrap, não reiniciar plano e não tentar corrigir esse erro com tokens no frontend. Após selecionar Source: GitHub Actions, reexecutar somente os jobs com falha; o artefato já foi gerado. Se expirado, executar o workflow completo. URL ainda não validada: https://luandev93.github.io/radarB3/ .
+Fase 2: criar src/services e tipos de domínio conforme MVP_PLAN. Definir null, unidade, fonte, timestamp e atraso conhecido/desconhecido. Depois criar adaptador com fixtures de teste e verificar os limites reais brapi free tier. Não reiniciar planejamento, não expandir para carteira/IA/login e não provisionar Railway antes da necessidade/fase prevista. Continuar atualizando STATUS em cada commit relevante.
