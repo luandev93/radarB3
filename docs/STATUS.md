@@ -1,15 +1,13 @@
 # RadarB3 — Status vivo
 
-Última atualização: 2026-10-01  
-Fase ativa: **Fase 1 — Bootstrap frontend + GitHub Pages**  
-Estado geral: **PRONTO PARA IMPLEMENTAÇÃO**
+Última atualização: 2026-10-01
+Fase ativa: **Fase 1 — Bootstrap frontend + GitHub Pages**
+Estado geral: **FRONTEND IMPLEMENTADO — VALIDAÇÃO/PUBLICAÇÃO EM CURSO**
 
 ## Último commit registrado
 
-- Baseline documental da Fase 0: `57473e3` — `docs: add MVP plan status guard and handoff`
-- Último commit de implementação: **nenhum ainda**.
-
-> Regra: todo commit que altera código, configuração, workflow de produto ou comportamento deve modificar este arquivo no mesmo commit. Commits exclusivamente documentais ficam isentos para evitar autorreferência de SHA.
+- Baseline recebida: `3974004` — `docs(status): record phase 0 baseline`.
+- Este commit: `feat(web): bootstrap Vite React app and routes` (SHA registrado após criação para evitar autorreferência).
 
 ## Progresso global
 
@@ -23,82 +21,38 @@ Estado geral: **PRONTO PARA IMPLEMENTAÇÃO**
 - [ ] Fase 7 — Railway/PostgreSQL
 - [ ] Fase 8 — Release MVP
 
-## Fase 0 — concluído
-
-- [x] definir objetivo do MVP
-- [x] definir stack
-- [x] definir GitHub Pages como hospedagem inicial
-- [x] definir Railway como backend/PostgreSQL futuro
-- [x] definir brapi/CVM como fontes planejadas
-- [x] criar README
-- [x] criar plano detalhado
-- [x] criar handoff
-- [x] criar status vivo
-- [x] criar validação automática de atualização do status
-
-## Fase 1 — próximo trabalho
-
-### Pendente
-- [ ] inicializar Vite + React + TypeScript
-- [ ] instalar/configurar Tailwind
-- [ ] instalar/configurar React Router
-- [ ] configurar ESLint
-- [ ] configurar Vitest
-- [ ] criar layout base
-- [ ] criar rotas
-- [ ] configurar base path do GitHub Pages
-- [ ] criar deploy via GitHub Actions
-- [ ] publicar
-- [ ] validar URL pública
-
-## Decisões vigentes
-
-- frontend: Vite + React + TypeScript;
-- hospedagem inicial: GitHub Pages;
-- CSS: Tailwind;
-- banco futuro: PostgreSQL no Railway;
-- backend futuro: Railway;
-- fonte operacional planejada: brapi free tier;
-- fonte oficial complementar: CVM;
-- sem scraping do Investidor10 como dependência;
-- sem autenticação no MVP;
-- sem recomendações automáticas de investimento no MVP.
-
-## Validações executadas
-
-- repositório confirmado: `luandev93/radarB3`;
-- branch padrão: `main`;
-- repositório iniciou vazio;
-- README criado com sucesso.
-
-## Bloqueios atuais
-
-Nenhum bloqueio técnico conhecido para iniciar a Fase 1.
-
-## Próximo passo exato
-
-Criar a aplicação Vite React TypeScript diretamente no repositório, configurar o `base` para GitHub Pages e criar a estrutura mínima de rotas sem ainda acoplar a API externa.
-
-## Como atualizar este arquivo em cada commit
-
-Use este padrão:
-
-```md
-## Último commit registrado
-- <SHA curto> — <mensagem>
-
 ## Alterado neste commit
-- ...
 
-## Validações
-- npm test
-- npm run build
+- [x] Inicializar Vite + React + TypeScript.
+- [x] Configurar Tailwind v4 pelo plugin Vite.
+- [x] Configurar React Router com HashRouter.
+- [x] Configurar ESLint, Vitest e formatter Prettier.
+- [x] Criar layout responsivo, navegação, foco/título por rota e estado indisponível compartilhado.
+- [x] Criar `/`, `/acoes`, `/fiis`, `/rankings`, `/screener`, `/ativo/:ticker` e fallback 404.
+- [x] Configurar base `/radarB3/`.
+- [x] Criar GitHub Actions para validar e publicar Pages.
+- [ ] Publicar.
+- [ ] Validar URL pública.
 
-## Bloqueios
-- nenhum
+Nenhuma fonte de dados está conectada. Sem métricas financeiras inventadas, segredos, scraping ou infraestrutura paga. Decisão de navegação: hash para recarga estática sem 404; detalhes no HANDOFF. Identidade e componentes compartilhados documentados em DESIGN.md e UX-CONTRACT.md.
+
+## Testes e validações executados
+
+- `npm run lint`: passou.
+- `npm test`: 4 testes passaram (navegação, metadados ausentes, ativo, endereços inválidos).
+- `npm run build`: passou; JS ~84.6 kB gzip e CSS ~3.1 kB gzip.
+- Auditoria estática premium strict: zero findings.
+- Lint de DESIGN.md: zero erros.
+- `npm ci`: instalação limpa passou.
+- `npm run format:check` e `npm run typecheck`: passaram.
+- `npm run test:e2e`: 2 testes passaram; seis rotas e 404, acesso direto/recarga, 390px/1280px, sem overflow ou erros JS; axe sem violações automatizadas.
+- Capturas de tela de Ações inspecionadas.
+- Download do Chromium 134 completado pelo mirror Microsoft oficial.
+
+## Bloqueios encontrados
+
+O primeiro download do Chromium (Playwright mais recente) devolveu um arquivo inválido neste ambiente. Playwright foi fixado em 1.51.1 para testar com um browser disponível. Habilitação de Pages ainda precisa ser confirmada.
 
 ## Próximo passo exato
-- ...
-```
 
-Se o commit muda código/configuração e não atualiza este arquivo, o workflow de governança deve falhar.
+Concluir a validação de navegador, publicar o commit em main, acompanhar o workflow de Pages e validar a URL https://luandev93.github.io/radarB3/ e todas as rotas públicas. Não iniciar Fase 2 antes desse gate.

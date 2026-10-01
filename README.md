@@ -2,7 +2,7 @@
 
 RadarB3 é um screener e painel de análise de ativos da B3, criado para consolidar dados de mercado e fundamentos em uma interface rápida, filtrável e orientada à comparação.
 
-> Status atual: planejamento do MVP. Nenhuma recomendação de investimento é produzida pelo sistema. Os indicadores são informativos e devem exibir fonte e data de atualização.
+> Status atual: frontend inicial implementado; publicação em validação. Nenhuma recomendação de investimento é produzida pelo sistema. Os indicadores são informativos e devem exibir fonte e data de atualização.
 
 ## Objetivo do MVP
 
@@ -22,6 +22,7 @@ Entregar uma aplicação web pública capaz de:
 ## Stack definida
 
 ### Frontend
+
 - Vite
 - React
 - TypeScript
@@ -30,6 +31,7 @@ Entregar uma aplicação web pública capaz de:
 - GitHub Pages
 
 ### Dados e backend
+
 - brapi como fonte operacional inicial de mercado, respeitando limites do plano gratuito;
 - CVM para dados oficiais e demonstrações financeiras quando aplicável;
 - PostgreSQL no Railway para persistência quando a fase de banco for ativada;
@@ -189,3 +191,25 @@ Ao finalizar cada commit, atualizar `docs/STATUS.md` no mesmo commit.
 A licença do projeto ainda não foi definida.
 
 O RadarB3 é uma ferramenta de organização e visualização de dados. Informações financeiras podem conter atraso, divergências entre fontes ou eventos não recorrentes. O usuário deve confirmar os dados nas fontes oficiais antes de tomar decisões financeiras.
+
+## Desenvolvimento local
+
+Requer Node.js 24 e npm.
+
+```sh
+npm ci
+npm run dev
+npm run lint
+npm test
+npm run build
+npx playwright install chromium
+npm run test:e2e
+```
+
+O Vite usa `/radarB3/` como base. O React Router usa hash para permitir acesso direto e recarga no GitHub Pages sem regras de servidor. Exemplo: `/radarB3/#/ativo/PETR4`. A integração de dados começa na Fase 2; os valores, fonte e atualização ausentes aparecem explicitamente como indisponíveis.
+
+## Publicação
+
+URL prevista (validar em STATUS): https://luandev93.github.io/radarB3/
+
+O workflow `.github/workflows/pages.yml` executa formatter, ESLint, Vitest, build e testes de navegador antes do deploy. Push em `main` publica via GitHub Actions. PRs só validam. Nas configurações do repositório, Pages deve usar **GitHub Actions** como fonte; o workflow tenta habilitar Pages quando permitido.

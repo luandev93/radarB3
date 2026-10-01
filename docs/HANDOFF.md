@@ -11,12 +11,13 @@ Branch base:
 `main`
 
 Estado recebido:
+
 - planejamento do MVP concluído;
 - README criado;
 - plano detalhado criado;
 - status vivo criado;
 - governança de commits criada;
-- nenhuma feature do frontend implementada ainda.
+- frontend Fase 1 implementado; publicação e validação pública pendentes, conforme STATUS.
 
 ## Leitura obrigatória antes de editar código
 
@@ -33,6 +34,7 @@ Não refaça o planejamento salvo nesses arquivos, exceto se encontrar uma contr
 ## Stack aprovada
 
 Frontend:
+
 - Vite
 - React
 - TypeScript
@@ -42,13 +44,16 @@ Frontend:
 - ESLint
 
 Deploy inicial:
+
 - GitHub Pages
 
 Dados:
+
 - brapi no free tier como fonte operacional planejada;
 - CVM como fonte oficial complementar.
 
 Infra futura:
+
 - Railway;
 - PostgreSQL;
 - API/worker apenas quando necessário.
@@ -91,6 +96,7 @@ Comece por ela.
 ## Regras de commit
 
 Cada commit relevante deve:
+
 - ser pequeno e coerente;
 - deixar o projeto buildável;
 - atualizar `docs/STATUS.md`;
@@ -122,6 +128,7 @@ Não remover ou contornar essa regra para acelerar o desenvolvimento. Se a regra
 ## Regras de dados
 
 Antes de exibir qualquer métrica:
+
 - definir unidade;
 - definir fonte;
 - definir timestamp;
@@ -133,6 +140,7 @@ Antes de exibir qualquer métrica:
 ## Definição da primeira entrega visual
 
 A primeira entrega publicada deve permitir:
+
 - abrir a home;
 - navegar para todas as rotas;
 - visualizar layout responsivo;
@@ -156,6 +164,7 @@ A primeira entrega publicada deve permitir:
 `feat(web): bootstrap Vite React app and routes`
 
 Esse commit deve incluir:
+
 - app inicial;
 - rotas;
 - layout;
@@ -166,8 +175,22 @@ Esse commit deve incluir:
 ## Critério para passar à Fase 2
 
 Somente avançar quando:
+
 - GitHub Pages estiver publicado;
 - todas as rotas abrirem;
 - build estiver verde;
 - teste mínimo estiver verde;
 - `docs/STATUS.md` registrar a URL pública e as validações.
+
+## Decisões do bootstrap (2026-10-01)
+
+- Vite com `base: '/radarB3/'`; React Router com HashRouter. Rotas lógicas continuam as previstas; URL pública usa hash: `/radarB3/#/acoes` e `/radarB3/#/ativo/PETR4`. Escolha evita 404 em recarga sem fallback do servidor do Pages e sem redirecionamento JavaScript de 404.
+- Páginas iniciais são funcionais para navegação, com dados explicitamente indisponíveis. Não há fixtures financeiras apresentadas como cotações. Adaptadores e fontes continuam na Fase 2.
+- DESIGN.md e UX-CONTRACT.md registram tokens, idioma pt-BR, navegação e estados comuns.
+- Node.js 24; npm ci usa o lockfile. Tailwind v4 usa plugin Vite. ESLint, Vitest, Prettier e Playwright/axe configurados.
+- Testes de navegador cobrem 390px e 1280px, seis rotas e 404, acesso direto e recarga. Playwright 1.51.1 fixado após falha de download do browser da versão mais recente no ambiente.
+- Workflow Pages valida antes de publicar em main; PR não publica. `configure-pages` tenta enablement. Se faltar permissão de habilitação, selecionar Settings → Pages → Source: GitHub Actions e reexecutar workflow. Não declarar Fase 1 concluída sem deploy e URL verificados.
+
+## Próximo passo exato vigente
+
+Terminar validação local do navegador, enviar bootstrap a main, verificar GitHub Actions e URL pública. Registrar evidências e só então mudar para Fase 2.

@@ -3,7 +3,7 @@ name: Require STATUS update
 on:
   push:
     branches:
-      - "**"
+      - '**'
   pull_request:
 
 jobs:

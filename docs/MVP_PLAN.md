@@ -28,6 +28,7 @@ O MVP deve provar quatro coisas:
 ## 3. Stack
 
 ### Frontend
+
 - Vite
 - React
 - TypeScript
@@ -39,11 +40,13 @@ O MVP deve provar quatro coisas:
 - GitHub Pages
 
 ### Dados
+
 - brapi: mercado e indicadores disponíveis no plano gratuito;
 - CVM: demonstrações financeiras e dados oficiais, quando aplicável;
 - cálculos derivados próprios para métricas históricas.
 
 ### Persistência
+
 - PostgreSQL no Railway, ativado na Fase 7.
 - Sem ORM obrigatório no MVP; decidir quando o backend for criado.
 - Preferir SQL explícito ou uma camada pequena e previsível.
@@ -96,6 +99,7 @@ Objetivo: histórico, rankings calculados, cache persistente e independência pa
 ## 5. Modelo de domínio inicial
 
 ### Asset
+
 - ticker
 - name
 - type: STOCK | FII
@@ -105,6 +109,7 @@ Objetivo: histórico, rankings calculados, cache persistente e independência pa
 - logoUrl opcional
 
 ### Quote
+
 - ticker
 - price
 - changePercent
@@ -119,6 +124,7 @@ Objetivo: histórico, rankings calculados, cache persistente e independência pa
 - delayMinutes quando conhecido
 
 ### Fundamentals
+
 - ticker
 - pe
 - pb
@@ -133,6 +139,7 @@ Objetivo: histórico, rankings calculados, cache persistente e independência pa
 - source
 
 ### Dividend
+
 - ticker
 - kind
 - exDate
@@ -141,6 +148,7 @@ Objetivo: histórico, rankings calculados, cache persistente e independência pa
 - source
 
 ### PricePoint
+
 - ticker
 - date
 - open
@@ -157,6 +165,7 @@ Objetivo: histórico, rankings calculados, cache persistente e independência pa
 Objetivo: repositório com contexto suficiente para qualquer nova sessão continuar.
 
 Entregáveis:
+
 - [x] README inicial
 - [x] plano do MVP
 - [x] STATUS.md
@@ -164,24 +173,27 @@ Entregáveis:
 - [x] workflow para exigir atualização do status em commits de implementação
 
 Critério de saída:
+
 - novo chat consegue identificar stack, escopo, fase atual e próximo passo apenas lendo o repositório.
 
 ### Fase 1 — Bootstrap frontend + GitHub Pages
 
 Entregáveis:
-- [ ] criar projeto Vite React TypeScript
-- [ ] configurar Tailwind
-- [ ] configurar ESLint
-- [ ] configurar Vitest
-- [ ] configurar React Router
-- [ ] criar layout base responsivo
-- [ ] criar navegação principal
-- [ ] configurar `base` corretamente para `/radarB3/`
-- [ ] criar workflow de build/deploy GitHub Pages
+
+- [x] criar projeto Vite React TypeScript
+- [x] configurar Tailwind
+- [x] configurar ESLint
+- [x] configurar Vitest
+- [x] configurar React Router
+- [x] criar layout base responsivo
+- [x] criar navegação principal
+- [x] configurar `base` corretamente para `/radarB3/`
+- [x] criar workflow de build/deploy GitHub Pages
 - [ ] validar deploy público
 - [ ] registrar URL publicada em README e STATUS
 
 Rotas:
+
 - /
 - /acoes
 - /fiis
@@ -190,6 +202,7 @@ Rotas:
 - /ativo/:ticker
 
 Critério de saída:
+
 - deploy no GitHub Pages abre sem erros;
 - reload/navegação não quebra;
 - build e testes passam.
@@ -197,6 +210,7 @@ Critério de saída:
 ### Fase 2 — Camada de dados
 
 Entregáveis:
+
 - [ ] criar `src/services`
 - [ ] criar tipos de domínio
 - [ ] criar adaptador da fonte de dados
@@ -208,12 +222,14 @@ Entregáveis:
 - [ ] mapear limites reais do free tier usado
 
 Critério de saída:
+
 - UI não conhece formato bruto da API externa;
 - trocar a fonte exige alterar somente adaptadores.
 
 ### Fase 3 — Lista de ações e FIIs
 
 Entregáveis:
+
 - [ ] tabela/grid reutilizável
 - [ ] busca por ticker/nome
 - [ ] ordenação
@@ -224,6 +240,7 @@ Entregáveis:
 - [ ] separar ações e FIIs
 
 Colunas mínimas:
+
 - ticker
 - nome
 - preço
@@ -236,12 +253,14 @@ Colunas mínimas:
 - atualização
 
 Critério de saída:
+
 - lista navegável e rápida em desktop e mobile;
 - clique abre a página do ativo.
 
 ### Fase 4 — Página individual do ativo
 
 Entregáveis:
+
 - [ ] cabeçalho do ativo
 - [ ] preço e variação
 - [ ] cards de indicadores
@@ -252,6 +271,7 @@ Entregáveis:
 - [ ] fallback para campos indisponíveis
 
 Indicadores alvo:
+
 - P/L
 - P/VP
 - DY
@@ -263,12 +283,14 @@ Indicadores alvo:
 - dívida líquida/EBITDA quando aplicável
 
 Critério de saída:
+
 - URL `/ativo/PETR4` ou equivalente abre diretamente;
 - dados ausentes não quebram a tela.
 
 ### Fase 5 — Rankings
 
 Entregáveis:
+
 - [ ] ranking por DY
 - [ ] ranking por P/L
 - [ ] ranking por P/VP
@@ -280,17 +302,20 @@ Entregáveis:
 - [ ] filtros por tipo de ativo
 
 Regras:
+
 - nulos nunca devem aparecer artificialmente como melhores;
 - valores negativos precisam de tratamento explícito;
 - rankings devem informar critério, unidade, fonte e atualização.
 
 Critério de saída:
+
 - ordenação previsível e testada;
 - nenhum ranking implica recomendação.
 
 ### Fase 6 — Screener
 
 Entregáveis:
+
 - [ ] filtros combináveis
 - [ ] chips/resumo dos filtros ativos
 - [ ] reset de filtros
@@ -299,6 +324,7 @@ Entregáveis:
 - [ ] ordenação independente do filtro
 
 Filtros alvo:
+
 - ações/FIIs
 - ticker
 - setor
@@ -311,6 +337,7 @@ Filtros alvo:
 - liquidez
 
 Critério de saída:
+
 - combinações funcionam sem inconsistências;
 - filtros podem ser reproduzidos/compartilhados.
 
@@ -319,6 +346,7 @@ Critério de saída:
 Ativar apenas quando houver necessidade comprovada.
 
 Entregáveis:
+
 - [ ] projeto/serviço no Railway
 - [ ] PostgreSQL
 - [ ] API RadarB3
@@ -332,6 +360,7 @@ Entregáveis:
 - [ ] nenhuma credencial no repositório
 
 Schema inicial previsto:
+
 - assets
 - quotes
 - fundamentals
@@ -341,6 +370,7 @@ Schema inicial previsto:
 - sync_runs
 
 Critério de saída:
+
 - frontend consome nossa API;
 - falha externa temporária não derruba todo o site;
 - banco pode ser reconstruído por migrations.
@@ -348,6 +378,7 @@ Critério de saída:
 ### Fase 8 — Release MVP
 
 Checklist:
+
 - [ ] Lighthouse satisfatório
 - [ ] acessibilidade básica
 - [ ] responsividade
@@ -367,6 +398,7 @@ Checklist:
 ## 7. Critérios de qualidade
 
 ### Dados
+
 - não inventar valores;
 - null é preferível a estimativa silenciosa;
 - indicar unidade;
@@ -376,6 +408,7 @@ Checklist:
 - validar fórmulas derivadas com testes.
 
 ### UI
+
 - mobile-first;
 - carregamento progressivo;
 - tabelas legíveis;
@@ -385,6 +418,7 @@ Checklist:
 - comparação rápida entre ativos.
 
 ### Performance
+
 - bundle enxuto;
 - lazy loading para páginas pesadas;
 - cache onde permitido;
@@ -410,6 +444,7 @@ tipo(escopo): descrição curta
 ```
 
 Exemplos:
+
 - `feat(assets): add stock listing`
 - `feat(rankings): add dividend yield ranking`
 - `fix(data): handle missing P/VP`
@@ -438,6 +473,7 @@ Nunca escrever apenas "em andamento" sem indicar o que falta.
 ## 11. Definição de pronto
 
 Uma tarefa só pode ser marcada como concluída quando:
+
 - implementação existe;
 - build passa;
 - testes relacionados passam;
