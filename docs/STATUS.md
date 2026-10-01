@@ -6,10 +6,10 @@ Estado geral: **PRONTO PARA IMPLEMENTAÇÃO**
 
 ## Último commit registrado
 
-- Bootstrap documental iniciado em `9f0c293` — `docs: initialize RadarB3 MVP`
-- O commit atual desta documentação deve substituir/avançar essa referência após ser criado.
+- Baseline documental da Fase 0: `57473e3` — `docs: add MVP plan status guard and handoff`
+- Último commit de implementação: **nenhum ainda**.
 
-> Regra: a partir da ativação do workflow de governança, todo commit relevante deve modificar este arquivo no mesmo commit.
+> Regra: todo commit que altera código, configuração, workflow de produto ou comportamento deve modificar este arquivo no mesmo commit. Commits exclusivamente documentais ficam isentos para evitar autorreferência de SHA.
 
 ## Progresso global
 
